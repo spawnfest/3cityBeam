@@ -1,15 +1,14 @@
 defmodule StockBeam.Market do
   alias __MODULE__
 
-  @enforce_keys [:users]
-  defstruct [:users]
+  @enforce_keys [:transactions]
+  defstruct [:transactions]
 
   def new do
-    {:ok, %Market{users: []}}
+    {:ok, %Market{transactions: []}}
   end
 
-  def add_user(%Market{users: users}, user) do
-    {_status, pid} = StockBeam.Workers.User.start_link(user)
-    {:ok, %Market{users: [{pid, user.uuid} | users]}}
+  def add_transaction(market, transaction) do
+    {:ok, %Market{transactions: [transaction | market.transactions]} }
   end
 end
