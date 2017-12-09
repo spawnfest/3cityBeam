@@ -2,13 +2,15 @@ defmodule StockBeam.User do
   @moduledoc """
   Module specified all user actions and logic in the app
   """
+  alias __MODULE__
+
   @uuid_base 3453234233
 
-  @enfoce_keys [:name]
+  @enforce_keys [:name]
   defstruct [:name, :wallets, :uuid]
 
   def new(name) do
-    {:ok, %StockBeam.User{name: name, wallets: [], uuid: generate_uuid()}}
+    {:ok, %User{name: name, wallets: [], uuid: generate_uuid()}}
   end
 
   defp generate_uuid do

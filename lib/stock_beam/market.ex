@@ -1,12 +1,14 @@
 defmodule StockBeam.Market do
+  alias __MODULE__
+
   @enforce_keys [:users]
   defstruct [:users]
 
   def new do
-    {:ok, %StockBeam.Market{users: []}}
+    {:ok, %Market{users: []}}
   end
 
-  def add_user(%StockBeam.Market{users: users}, user) do
-    {:ok, %StockBeam.Market{users: [user | users]}}
+  def add_user(%Market{users: users}, user) do
+    {:ok, %Market{users: [user | users]}}
   end
 end
