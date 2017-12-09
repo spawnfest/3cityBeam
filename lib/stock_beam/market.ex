@@ -9,6 +9,7 @@ defmodule StockBeam.Market do
   end
 
   def add_user(%Market{users: users}, user) do
-    {:ok, %Market{users: [user | users]}}
+    {_status, pid} = StockBeam.Workers.User.start_link(user)
+    {:ok, %Market{users: [{pid, user.uuid} | users]}}
   end
 end

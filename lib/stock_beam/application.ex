@@ -8,7 +8,8 @@ defmodule StockBeam.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      {StockBeam.Workers.Market, StockBeam.Market.new}
+      {StockBeam.Workers.Market, StockBeam.Market.new},
+      {StockBeam.Workers.Session, []}
       # Starts a worker by calling: StockBeam.Worker.start_link(arg)
       # {StockBeam.Worker, arg},
     ]
