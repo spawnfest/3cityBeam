@@ -19,7 +19,7 @@ defmodule StockBeam.Workers.Market do
 
   ###  Client API / Helper functions
 
-  def start_link({_, market} \\ []) do
+  def start_link({_, market}) do
     GenServer.start_link(__MODULE__, market, name: __MODULE__)
   end
 
