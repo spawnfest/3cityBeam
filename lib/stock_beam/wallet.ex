@@ -4,11 +4,12 @@ defmodule StockBeam.Wallet do
   It holds info about the User's Assets
   """
   alias __MODULE__
+  alias StockBeam.Asset
 
-  @enforce_keys [:assets]
-  defstruct [:assets]
+  @enforce_keys [:asset]
+  defstruct [:asset]
 
-  def new do
-    %Wallet{assets: []}
+  def new(currency) do
+    %Wallet{asset:  Asset.new(currency)}
   end
 end
