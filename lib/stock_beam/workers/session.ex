@@ -6,7 +6,7 @@ defmodule StockBeam.Workers.Session do
   def init(state), do: {:ok, state}
 
   def handle_call({:add_user, {:ok, user}}, _from, state) do
-     {:reply, nil, [state | user]}
+     {:reply, nil, [user | state]}
   end
 
   ###  Client API / Helper functions
