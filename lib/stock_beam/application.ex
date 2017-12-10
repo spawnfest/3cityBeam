@@ -9,7 +9,9 @@ defmodule StockBeam.Application do
     # List all child processes to be supervised
     children = [
       {StockBeam.Workers.Market, StockBeam.Market.new},
-      {StockBeam.Workers.Session, []}
+      {StockBeam.Workers.Session, []},
+      {StockBeam.Workers.MessageReceiver, []}
+
       # Starts a worker by calling: StockBeam.Worker.start_link(arg)
       # {StockBeam.Worker, arg},
     ]
@@ -17,6 +19,7 @@ defmodule StockBeam.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: StockBeam.Supervisor]
+    IO.puts("StockBEAM.Application starting")
     Supervisor.start_link(children, opts)
   end
 end

@@ -10,6 +10,10 @@ defmodule StockBeam.Workers.Session do
      {:reply, new_state, new_state}
   end
 
+  def handle_call({:list_users}, _from, state) do
+    {:reply, state, state}
+  end
+
   ###  Client API / Helper functions
 
   def start_link(state \\ []) do
@@ -18,5 +22,9 @@ defmodule StockBeam.Workers.Session do
 
   def sign_in({_, user}) do
     GenServer.call(__MODULE__, {:sign_in, user})
+  end
+
+  def list_users do
+    GenServer.call(__MODULE__, {:list_users})
   end
 end

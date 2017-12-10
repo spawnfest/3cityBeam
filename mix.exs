@@ -7,7 +7,8 @@ defmodule StockBeam.Mixfile do
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript()
     ]
   end
 
@@ -17,6 +18,10 @@ defmodule StockBeam.Mixfile do
       extra_applications: [:logger],
       mod: {StockBeam.Application, []}
     ]
+  end
+
+  defp escript do
+    [main_module: StockBeam.CLI, app: nil]
   end
 
   # Run "mix help deps" to learn about dependencies.
