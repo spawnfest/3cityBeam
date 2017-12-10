@@ -5,8 +5,9 @@ defmodule StockBeam.Workers.Session do
 
   def init(state), do: {:ok, state}
 
-  def handle_call({:add_user, {:ok, user}}, _from, state) do
-     {:reply, nil, [user | state]}
+  def handle_call({:sign_in, user}, _from, state) do
+    new_state = [user | state]
+     {:reply, new_state, new_state}
   end
 
   ###  Client API / Helper functions
@@ -15,7 +16,7 @@ defmodule StockBeam.Workers.Session do
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
   end
 
-  def add_user(user) do
-    GenServer.call(__MODULE__, {:add_user, user})
+  def sign_in({_, user}) do
+    GenServer.call(__MODULE__, {:sign_in, user})
   end
 end

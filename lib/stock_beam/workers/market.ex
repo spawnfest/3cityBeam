@@ -8,13 +8,13 @@ defmodule StockBeam.Workers.Market do
   def handle_call({:sell, price, amount, token}, _from, state) do
     transaction = %StockBeam.Transaction{type: :bid, amount: amount, price: price, owner: token}
     {_, state} = StockBeam.Market.add_transaction(:bid, state, transaction)
-    {:reply, nil, state}
+    {:reply, state, state}
   end
 
   def handle_call({:buy, price, amount, token}, _from, state) do
     transaction = %StockBeam.Transaction{type: :ask, amount: amount, price: price, owner: token}
     {_, state} = StockBeam.Market.add_transaction(:ask, state, transaction)
-    {:reply, nil, state}
+    {:reply, state, state}
   end
 
   ###  Client API / Helper functions
