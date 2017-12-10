@@ -10,7 +10,7 @@ defmodule StockBeam.User do
   @enforce_keys [:name]
   defstruct [:name, :wallets, :uuid]
 
-  @default_currencies ["$", "BeamCoin"]
+  @default_currencies ["$", "⌶"]
 
   def new(name) do
     {:ok, %User{name: name, wallets: create_wallets(), uuid: generate_uuid()}}

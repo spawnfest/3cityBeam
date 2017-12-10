@@ -12,6 +12,6 @@ defmodule StockBeam.Asset do
   end
 
   defp rand_amount_for("$"), do: :rand.uniform(100000)
-  defp rand_amount_for("BeamCoin"), do: :rand.uniform(100)
+  defp rand_amount_for("⌶"), do: :rand.uniform(100)
   defp rand_amount_for(_), do: 100
 end
